@@ -1,0 +1,34 @@
+# Server settings
+server:
+    tomcat:
+        basedir: /var/tmp/oneblog/blog-web
+# SPRING PROFILES
+spring:
+    profiles:
+        include: [center-test]
+
+# logging settings
+logging:
+    config: classpath:logback-spring.xml
+    file:
+      path: /var/tmp/oneblog/blog-web
+
+# braum过滤器，用于过滤恶意请求
+braum:
+  limit:
+      access:
+          type: redis
+          threshold: 30
+          interval: 5000
+
+####################################自定义配置##########################################
+app:
+    # 是否启用kaptcha验证码
+    enableKaptcha: true
+    # 启用后，项目在启动时会打印数据库（Mysql和Redis）链接信息（包含密码）
+    # 代码请参考
+    enabledPrintConfig: true
+    # CDN 域名【"" 获取 http://www.cdn.com】
+    cdnDomain: ""
+    cdnVersion: "v=1.0.0.0"
+####################################自定义配置##########################################
